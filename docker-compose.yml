@@ -4,20 +4,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"
-    volumes: 
-      - /usr/app/node_modules
-      - .:/usr/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes: 
-      - /usr/app/node_modules
-      - .:/usr/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: [ "npm", "run", "test" ]
+  ports:
+    - "80:80"
