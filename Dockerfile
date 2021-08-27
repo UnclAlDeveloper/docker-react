@@ -1,6 +1,6 @@
 # Use an existing docker image as a base
-FROM node:alpine 
-# FROM node:alpine as builder
+# FROM node:alpine 
+FROM node:alpine as builder
 
 # Set working directory
 WORKDIR "/usr/app"
@@ -15,6 +15,6 @@ RUN npm run build
 
 FROM nginx
 EXPOSE 80
-COPY --from=0 /usr/app/build /usr/share/nginx/html 
-# COPY --from=builder /usr/app/build /usr/share/nginx/html
+# COPY --from=0 /usr/app/build /usr/share/nginx/html 
+COPY --from=builder /usr/app/build /usr/share/nginx/html
 
